@@ -19,7 +19,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task findTaskById(UUID id) {
-        return this.taskRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not found task by id '%d'!".formatted(id)));
+        return this.taskRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not found task by id '%s'!".formatted(id)));
     }
 
     @Override
@@ -35,6 +35,9 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task updateTask(UUID id, TaskDTO data) {
         Task task = this.findTaskById(id);
+        if (task == null) {
+            throw new EntityNotFoundException("Not found task by id '%s'!".formatted(id));
+        }
         task.setTitle(data.title());
         task.setDescription(data.description());
         task.setActive(data.active());
