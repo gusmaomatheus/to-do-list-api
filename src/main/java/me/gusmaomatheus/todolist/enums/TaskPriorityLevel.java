@@ -1,4 +1,4 @@
-package me.gusmaomatheus.todolist.todolist.enums;
+package me.gusmaomatheus.todolist.enums;
 
 import lombok.Getter;
 

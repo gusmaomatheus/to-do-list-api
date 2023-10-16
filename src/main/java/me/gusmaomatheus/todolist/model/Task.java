@@ -1,4 +1,4 @@
-package me.gusmaomatheus.todolist.todolist.model;
+package me.gusmaomatheus.todolist.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import me.gusmaomatheus.todolist.todolist.enums.TaskPriorityLevel;
+import me.gusmaomatheus.todolist.enums.TaskPriorityLevel;
 
 @Entity
 @Table(name = "tasks")

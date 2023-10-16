@@ -1,6 +1,6 @@
-package me.gusmaomatheus.todolist.todolist.dto;
+package me.gusmaomatheus.todolist.dto;
 
-import me.gusmaomatheus.todolist.todolist.enums.TaskPriorityLevel;
+import me.gusmaomatheus.todolist.enums.TaskPriorityLevel;
 
 public record TaskDTO(
         String title,

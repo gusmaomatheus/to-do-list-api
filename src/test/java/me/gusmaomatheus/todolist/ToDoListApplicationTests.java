@@ -1,4 +1,4 @@
-package me.gusmaomatheus.todolist.todolist;
+package me.gusmaomatheus.todolist;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
