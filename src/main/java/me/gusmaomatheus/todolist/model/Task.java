@@ -1,6 +1,8 @@
 package me.gusmaomatheus.todolist.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.gusmaomatheus.todolist.dto.TaskDTO;
 import me.gusmaomatheus.todolist.enums.TaskPriorityLevel;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "tasks")
@@ -17,8 +21,8 @@ import me.gusmaomatheus.todolist.enums.TaskPriorityLevel;
 @NoArgsConstructor
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     @Column(length = 50, unique = true)
     @Size(min = 6, max = 50)
     private String title;

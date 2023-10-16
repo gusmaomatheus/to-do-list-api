@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service("taskService")
 public class TaskServiceImpl implements TaskService {
@@ -16,7 +17,7 @@ public class TaskServiceImpl implements TaskService {
     TaskRepository taskRepository;
 
     @Override
-    public Task findTaskById(Long id) {
+    public Task findTaskById(UUID id) {
         return this.taskRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not found task by id '%d'!".formatted(id)));
     }
 
@@ -31,12 +32,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task updateTask(Long id, TaskDTO data) {
+    public Task updateTask(UUID id, TaskDTO data) {
         return null;
     }
 
     @Override
-    public Task deleteTask(Long id) {
+    public Task deleteTask(UUID id) {
         return null;
     }
 }

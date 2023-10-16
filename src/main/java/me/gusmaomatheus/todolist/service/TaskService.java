@@ -4,12 +4,13 @@ import me.gusmaomatheus.todolist.dto.TaskDTO;
 import me.gusmaomatheus.todolist.model.Task;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface TaskService {
 
-    Task findTaskById(Long id);
+    Task findTaskById(UUID id);
     List<Task> getAllTasks();
     Task createTask(TaskDTO data);
-    Task updateTask(Long id, TaskDTO data);
-    Task deleteTask(Long id);
+    Task updateTask(UUID id, TaskDTO data);
+    Task deleteTask(UUID id);
 }

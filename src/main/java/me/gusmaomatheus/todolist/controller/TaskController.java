@@ -10,28 +10,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/task-api/tasks")
+@RequestMapping("/task-api")
 public class TaskController {
 
     @Autowired
     private TaskServiceImpl taskService;
 
-    @PostMapping
+    @PostMapping("/tasks")
     public ResponseEntity<Task> createTask(@RequestBody TaskDTO data) {
         Task task = this.taskService.createTask(data);
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = this.taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Task> getTask(@PathVariable @Valid Long id) {
+    @GetMapping("/tasks/{id}")
+    public ResponseEntity<Task> getTask(@PathVariable @Valid UUID id) {
         Task task = this.taskService.findTaskById(id);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
