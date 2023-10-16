@@ -47,7 +47,10 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task deleteTask(UUID id) {
-        return null;
+    public void deleteTask(UUID id) {
+        Task task = this.taskRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Not found task by id '%s'!".formatted(id))
+        );
+        this.taskRepository.delete(task);
     }
 }

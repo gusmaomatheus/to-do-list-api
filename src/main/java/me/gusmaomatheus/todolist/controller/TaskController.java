@@ -13,33 +13,39 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/task-api")
+@RequestMapping("/task-api/tasks")
 public class TaskController {
 
     @Autowired
     private TaskServiceImpl taskService;
 
-    @PostMapping("/tasks")
+    @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody TaskDTO data) {
         Task task = this.taskService.createTask(data);
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
-    @GetMapping("/tasks")
+    @GetMapping
     public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = this.taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
-    @GetMapping("/tasks/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable @Valid UUID id) {
         Task task = this.taskService.findTaskById(id);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
-    @PutMapping("/tasks/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Task> updateTask(@RequestBody TaskDTO data, @PathVariable @Valid UUID id) {
         Task task = this.taskService.updateTask(id, data);
         return new ResponseEntity<>(task, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Task> deleteTask(@PathVariable UUID id) {
+        this.taskService.deleteTask(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

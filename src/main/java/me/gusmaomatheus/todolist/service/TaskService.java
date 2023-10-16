@@ -12,5 +12,5 @@ public interface TaskService {
     List<Task> getAllTasks();
     Task createTask(TaskDTO data);
     Task updateTask(UUID id, TaskDTO data);
-    Task deleteTask(UUID id);
+    void deleteTask(UUID id);
 }
