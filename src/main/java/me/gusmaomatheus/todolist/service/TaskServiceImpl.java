@@ -22,7 +22,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<Task> getAllTasks() {
-        return null;
+        return this.taskRepository.findAll();
     }
 
     @Override
