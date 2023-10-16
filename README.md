@@ -58,7 +58,7 @@ Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [httpie](htt
 
 1. **Criar tarefa**
     ```bash
-    8080/task-api/tasks name="Tarefa #1" description="Muito legal!" active="true" priority="HIGH"
+    http POST :8080/task-api/tasks name="Tarefa #1" description="Muito legal!" active="true" priority="HIGH"
     ```
     - Resultado esperado:
     ```json
