@@ -1,15 +1,13 @@
 package me.gusmaomatheus.todolist.controller;
 
 import jakarta.validation.Valid;
+import me.gusmaomatheus.todolist.dto.TaskDTO;
 import me.gusmaomatheus.todolist.model.Task;
 import me.gusmaomatheus.todolist.service.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +17,12 @@ public class TaskController {
 
     @Autowired
     private TaskServiceImpl taskService;
+
+    @PostMapping
+    public ResponseEntity<Task> createTask(@RequestBody TaskDTO data) {
+        Task task = this.taskService.createTask(data);
+        return new ResponseEntity<>(task, HttpStatus.CREATED);
+    }
 
     @GetMapping
     public ResponseEntity<List<Task>> getAllTasks() {

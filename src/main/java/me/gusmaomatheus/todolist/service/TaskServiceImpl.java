@@ -27,7 +27,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task createTask(TaskDTO data) {
-        return null;
+        return this.taskRepository.save(new Task(data));
     }
 
     @Override

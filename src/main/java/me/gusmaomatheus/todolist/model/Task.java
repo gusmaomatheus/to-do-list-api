@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.gusmaomatheus.todolist.dto.TaskDTO;
 import me.gusmaomatheus.todolist.enums.TaskPriorityLevel;
 
 @Entity
@@ -25,4 +26,11 @@ public class Task {
     private Boolean active;
     @Enumerated(EnumType.STRING)
     private TaskPriorityLevel priority;
+
+    public Task(TaskDTO data) {
+        this.title = data.title();
+        this.description = data.description();
+        this.active = data.active();
+        this.priority = data.priority();
+    }
 }
