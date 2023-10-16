@@ -32,8 +32,14 @@ public class TaskController {
     }
 
     @GetMapping("/tasks/{id}")
-    public ResponseEntity<Task> getTask(@PathVariable @Valid UUID id) {
+    public ResponseEntity<Task> getTaskById(@PathVariable @Valid UUID id) {
         Task task = this.taskService.findTaskById(id);
+        return new ResponseEntity<>(task, HttpStatus.OK);
+    }
+
+    @PutMapping("/tasks/{id}")
+    public ResponseEntity<Task> updateTask(@RequestBody TaskDTO data, @PathVariable @Valid UUID id) {
+        Task task = this.taskService.updateTask(id, data);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import me.gusmaomatheus.todolist.dto.TaskDTO;
 import me.gusmaomatheus.todolist.model.Task;
 import me.gusmaomatheus.todolist.repository.TaskRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task updateTask(UUID id, TaskDTO data) {
-        return null;
+        Task task = this.findTaskById(id);
+        task.setTitle(data.title());
+        task.setDescription(data.description());
+        task.setActive(data.active());
+        task.setPriority(data.priority());
+        return this.taskRepository.save(task);
     }
 
     @Override
